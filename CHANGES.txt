@@ -1,0 +1,9 @@
+Changelog
+=========
+
+0.0.0 (unreleased)
+------------------
+
+ - Initial version
+ - Ability to get fqdn, hostname and ip addresses (by eth name)
+
