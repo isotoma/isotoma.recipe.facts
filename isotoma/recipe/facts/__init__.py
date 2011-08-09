@@ -13,7 +13,14 @@
 # limitations under the License.
 
 import socket
+import fcntl
+import array
+import struct
+import platform
 from zc.buildout import UserError
+
+SIOCGIFCONF = 0x8912
+MAXBYTES = 8096
 
 
 class Facts(object):
@@ -26,7 +33,9 @@ class Facts(object):
         options['hostname'] = socket.gethostname()
         options['fqdn'] = socket.getfqdn()
 
-    def set_interfaes(self):
+        self.set_interfaces()
+
+    def set_interfaces(self):
         if platform.system() != "Linux":
             return
 
@@ -53,7 +62,7 @@ class Facts(object):
         for i in range(0, size, recordlen):
             iface = namestr[i:].split('\0', 1)[0]
             ip = socket.inet_ntoa(namestr[i+20:i+24])
-            options["interfaces.%s.address" % iface] = ip
+            self.options["interfaces.%s.address" % iface] = ip
 
         sock.close()
 
