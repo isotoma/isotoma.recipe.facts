@@ -12,11 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
 import socket
 import fcntl
 import array
 import struct
 import platform
+import subprocess
 from zc.buildout import UserError
 
 SIOCGIFCONF = 0x8912
@@ -34,6 +36,7 @@ class Facts(object):
         options['fqdn'] = socket.getfqdn()
 
         self.set_interfaces()
+        self.set_vcs()
 
     def set_interfaces(self):
         if platform.system() != "Linux":
@@ -65,6 +68,28 @@ class Facts(object):
             self.options["interfaces.%s.address" % iface] = ip
 
         sock.close()
+
+    def set_vcs(self):
+        vcs_dir = self.buildout["buildout"].get("cwd", self.buildout["buildout"]["directory"])
+
+        if os.path.exists(os.path.join(vcs_dir, ".svn")):
+            self.options["vcs.type"] = "svn"
+
+            p = subprocess.Popen(["svn", "info", vcs_dir], stdout=subprocess.PIPE)
+            s, e = p.communicate()
+
+            for line in s.split("\n"):
+                if ":" in line:
+                    k, v = line.split(": ")
+                    k = "vcs." + k.strip().lower().replace(" ", "-")
+                    v = v.strip()
+
+                    self.options[k] = v
+
+            self.options['vcs.branch'] = self.options['vcs.url'].replace(self.options['vcs.repository-root'], '')
+
+        elif os.path.exists(os.path.join(vcs_dir, ".git")):
+            self.options["vcs.type"] = "git"
 
     def install(self):
         return ()
