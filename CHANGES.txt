@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.0.1 (unreleased)
+0.0.1 (2011-08-11)
 ------------------
 
 - Detect information about vcs
