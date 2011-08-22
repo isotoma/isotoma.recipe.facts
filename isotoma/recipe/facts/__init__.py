@@ -91,6 +91,19 @@ class Facts(object):
         elif os.path.exists(os.path.join(vcs_dir, ".git")):
             self.options["vcs.type"] = "git"
 
+            old = os.getcwd()
+            os.chdir(vcs_dir)
+
+            p = subprocess.Popen(['git', 'branch'], stdout=subprocess.PIPE)
+            s, e = p.communicate()
+
+            for line in s.split('\n'):
+                if line.startswith('*'):
+                    self.options['vcs.branch'] = line[2:]
+                    break
+
+            os.chdir(old)
+
     def install(self):
         return ()
 
