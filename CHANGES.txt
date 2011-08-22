@@ -4,7 +4,7 @@ Changelog
 0.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add Git branch detection
 
 
 0.0.1 (2011-08-11)
