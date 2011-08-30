@@ -5,6 +5,7 @@ Changelog
 ------------------
 
 - Set ``user.name``, ``user.home``, ``user.uid`` and ``user.gid`` facts
+- Set ``vcs.branch`` and ``vcs.type`` even if the cwd isn't Git or SVN.
 
 
 0.0.2 (2011-08-22)

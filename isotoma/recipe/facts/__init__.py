@@ -106,6 +106,12 @@ class Facts(object):
                     self.options['vcs.branch'] = line[2:]
                     break
 
+
+        else:
+            self.options["vcs.type"] = "unknown"
+            self.options["vcs.branch"] = "unknown"
+
+
     def install(self):
         return ()
 
