@@ -38,8 +38,8 @@ class Facts(object):
 
         u = pwd.getpwuid(os.getuid())
         options['user.name'] = u.pw_name
-        options['user.uid'] = u.pw_uid
-        options['user.gid'] = u.pw_gid
+        options['user.uid'] = str(u.pw_uid)
+        options['user.gid'] = str(u.pw_gid)
         options['user.home'] = u.pw_dir
 
         self.set_interfaces()

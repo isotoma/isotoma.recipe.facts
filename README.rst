@@ -14,6 +14,18 @@ fqdn
     If no fqdn is available, this will be the same as hostname.
 interface.X.address
     The IP address of the network interface ``X``.
+user.name
+    The name of the account running buildout
+user.uid
+    The uid running buildout. Numerical.
+user.gid
+    The gid running buildout. Numerical.
+user.home
+    The home directory of the user running buildout
+vcs.type
+    The type of checkout that buildout is being run from. Supports Git or SVN, otherwise will be 'unknown'.
+vcs.branch
+    The branch or that that buildout is being run from. Will be 'unknown' for unsupported VCS.
 
 
 Using facts
@@ -33,4 +45,6 @@ This example uses the missingbits echo recipe to print information about the cur
         The hostname is ${facts:hostname}
         The fdqn is ${facts:fdqn}
         The main IP address is ${facts:interface.eth0.address}
+        The VCS type is ${facts:vcs.type} and branch is ${facts:vcs.branch}
+        The user is ${facts:user.name} and their home dir is ${facts:user.home}
 
