@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.0.3 (unreleased)
+0.0.3 (2011-08-30)
 ------------------
 
 - Set ``user.name``, ``user.home``, ``user.uid`` and ``user.gid`` facts
