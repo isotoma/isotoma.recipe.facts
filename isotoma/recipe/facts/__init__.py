@@ -19,6 +19,7 @@ import array
 import struct
 import platform
 import subprocess
+import pwd
 from zc.buildout import UserError
 
 SIOCGIFCONF = 0x8912
@@ -34,6 +35,12 @@ class Facts(object):
 
         options['hostname'] = socket.gethostname()
         options['fqdn'] = socket.getfqdn()
+
+        u = pwd.getpwuid(os.getuid())
+        options['user.name'] = u.pw_name
+        options['user.uid'] = u.pw_uid
+        options['user.gid'] = u.pw_gid
+        options['user.home'] = u.pw_dir
 
         self.set_interfaces()
         self.set_vcs()
