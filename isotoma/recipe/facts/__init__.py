@@ -82,7 +82,7 @@ class Facts(object):
         if os.path.exists(os.path.join(vcs_dir, ".svn")):
             self.options["vcs.type"] = "svn"
 
-            p = subprocess.Popen(["svn", "info", vcs_dir], stdout=subprocess.PIPE)
+            p = subprocess.Popen(["svn", "info", vcs_dir], stdout=subprocess.PIPE, env={'LC_MESSAGES':'en_GB'})
             s, e = p.communicate()
 
             for line in s.split("\n"):
