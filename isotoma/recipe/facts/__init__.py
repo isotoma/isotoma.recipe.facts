@@ -42,8 +42,20 @@ class Facts(object):
         options['user.gid'] = str(u.pw_gid)
         options['user.home'] = u.pw_dir
 
+        self.set_lsb_release()
         self.set_interfaces()
         self.set_vcs()
+
+    def set_lsb_release(self):
+        contents = ''
+        if os.path.exists("/etc/lsb-release"):
+            contents = open("/etc/lsb-release").read()
+        info = dict(line.split("=") for line in contents.splitlines() if line.strip())
+
+        self.options["lsb.codename"]    = info.get("DISTRIB_CODENAME", "")
+        self.options["lsb.release"]     = info.get("DISTRIB_RELEASE", "")
+        self.options["lsb.id"]          = info.get("DISTRIB_ID", "")
+        self.options["lsb.description"] = info.get("DISTRIB_DESCRIPTION", "")
 
     def set_interfaces(self):
         if platform.system() != "Linux":
