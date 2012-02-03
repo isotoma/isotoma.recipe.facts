@@ -1,10 +1,10 @@
 Changelog
 =========
 
-0.0.5 (unreleased)
+0.0.5 (2012-02-03)
 ------------------
 
-- Nothing changed yet.
+- Force english locale so the 'svn info' output is parseable everywhere
 
 
 0.0.4 (2012-02-03)
