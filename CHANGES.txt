@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.0.4 (unreleased)
+0.0.4 (2012-02-03)
 ------------------
 
 - Set ``lsb.codename`` and other lsb properties so we can make decisions
