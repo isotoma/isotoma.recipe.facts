@@ -23,7 +23,7 @@ user.gid
 user.home
     The home directory of the user running buildout
 vcs.type
-    The type of checkout that buildout is being run from. Supports Git or SVN, otherwise will be 'unknown'.
+    The type of checkout that buildout is being run from. Supports Mercurial ('hg'), Git ('git') or Subversion ('svn'), otherwise will be 'unknown'.
 vcs.branch
     The branch or that that buildout is being run from. Will be 'unknown' for unsupported VCS.
 
