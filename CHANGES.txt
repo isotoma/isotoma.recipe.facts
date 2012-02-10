@@ -4,7 +4,7 @@ Changelog
 0.0.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added support for Mercurial VCS
 
 
 0.0.5 (2012-02-03)
