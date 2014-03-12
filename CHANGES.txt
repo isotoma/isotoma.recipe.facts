@@ -4,7 +4,10 @@ Changelog
 0.0.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- fix bug when using without any vcs
+  [djay]
+- fix bug when interface name includes a ':'
+  [djay]
 
 
 0.0.6 (2012-02-10)
