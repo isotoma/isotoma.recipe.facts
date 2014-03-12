@@ -83,6 +83,8 @@ class Facts(object):
 
         for i in range(0, size, recordlen):
             iface = namestr[i:].split('\0', 1)[0]
+            # .installed.cfg has problems with ':' in keys
+            iface = iface.replace(':','_')
             ip = socket.inet_ntoa(namestr[i+20:i+24])
             self.options["interfaces.%s.address" % iface] = ip
 
