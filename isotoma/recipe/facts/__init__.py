@@ -118,7 +118,7 @@ class Facts(object):
                     self.options['vcs.branch'] = line[2:]
                     break
 
-        elif os.path.exists(os.path.join(vsc_dir, ".hg")):
+        elif os.path.exists(os.path.join(vcs_dir, ".hg")):
             self.options["vcs.type"] = "hg"
 
             p = subprocess.Popen(['hg', 'branch'], stdout=subprocess.PIPE, cwd=vcs_dir)
