@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.0.7 (unreleased)
+0.0.7 (2014-03-12)
 ------------------
 
 - fix bug when using without any vcs
