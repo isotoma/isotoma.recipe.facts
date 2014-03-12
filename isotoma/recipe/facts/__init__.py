@@ -83,6 +83,8 @@ class Facts(object):
 
         for i in range(0, size, recordlen):
             iface = namestr[i:].split('\0', 1)[0]
+            # .installed.cfg has problems with ':' in keys
+            iface = iface.replace(':','_')
             ip = socket.inet_ntoa(namestr[i+20:i+24])
             self.options["interfaces.%s.address" % iface] = ip
 
@@ -118,7 +120,7 @@ class Facts(object):
                     self.options['vcs.branch'] = line[2:]
                     break
 
-        elif os.path.exists(os.path.join(vsc_dir, ".hg")):
+        elif os.path.exists(os.path.join(vcs_dir, ".hg")):
             self.options["vcs.type"] = "hg"
 
             p = subprocess.Popen(['hg', 'branch'], stdout=subprocess.PIPE, cwd=vcs_dir)
