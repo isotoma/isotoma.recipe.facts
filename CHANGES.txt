@@ -10,7 +10,8 @@ Changelog
 0.0.8 (2015-04-15)
 ------------------
 
-- Nothing changed yet.
+- #6 - fix mercurial support
+  [pedroguiaroc]
 
 
 0.0.7 (2014-03-12)
