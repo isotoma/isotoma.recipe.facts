@@ -126,7 +126,7 @@ class Facts(object):
             p = subprocess.Popen(['hg', 'branch'], stdout=subprocess.PIPE, cwd=vcs_dir)
             s, e = p.communicate()
 
-            self.option['vcs.branch'] = s.strip()
+            self.options['vcs.branch'] = s.strip()
 
         else:
             self.options["vcs.type"] = "unknown"
